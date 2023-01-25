@@ -1,6 +1,17 @@
-<div>
-  <h1>Content List</h1>
-  <div *ngFor="let item of contentList.getContent(); let i = index">
-    <div [innerHTML]="contentList.getContentHTML(i)"></div>
+<!-- This div container will hold the entire card -->
+<div class="card-container">
+  
+  <!-- Using ngFor, we loop through our ContentList array and display each item -->
+  <div class="card" *ngFor="let content of contentList.contentArray">
+    <h2 class="card-title">{{content.title}}</h2>
+    <p class="card-description">{{content.description}}</p>
+    <p class="card-creator">{{content.creator}}</p>
+    <img [src]="content.imgURL" class="card-img">
+    <p class="card-type">{{content.type}}</p>
+    
+    <!-- Using ngFor, we loop through our tags array and display each tag -->
+    <div class="card-tags" *ngFor="let tag of content.tags">
+      <p>{{tag}}</p>
+    </div>
   </div>
 </div>
