@@ -25,7 +25,14 @@ export class ContentList {
 
   //function that takes an input of an index of the array and returns a reader-friendly html output of a Content item's properties at that index
   getContentHTML(index: number): string {
+    // check if the entered index is out of range
+    if (index < 0 || index >= this.content.length) {
+        // return an error message if the index is out of range
+        return `<div>Error: Index out of range</div>`;
+    }
+    // get the content item at the entered index
     const item = this.content[index];
+    // return the HTML output for the content item
     return `<div>
       <h2>${item.title}</h2>
       <p>${item.description}</p>
@@ -33,5 +40,4 @@ export class ContentList {
       ${item.imgURL ? `<img src="${item.imgURL}" alt="${item.title}">` : ""}
       <p>Type: ${item.type}</p>
     </div>`;
-  }
-}
+}}

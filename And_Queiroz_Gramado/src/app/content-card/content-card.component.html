@@ -1,0 +1,6 @@
+<div>
+  <h1>Content List</h1>
+  <div *ngFor="let item of contentList.getContent(); let i = index">
+    <div [innerHTML]="contentList.getContentHTML(i)"></div>
+  </div>
+</div>
