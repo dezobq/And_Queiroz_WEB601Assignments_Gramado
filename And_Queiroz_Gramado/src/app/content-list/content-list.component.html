@@ -1,0 +1,7 @@
+<ng-container *ngFor="let content of contentArray; let i = index">
+  <div [ngClass]="{ 'first-card': i === 0,
+        'other-cards': true }"
+       (click)="onContentClick(content)" >
+    <app-content-card [content]="content" ></app-content-card>
+  </div>
+</ng-container>

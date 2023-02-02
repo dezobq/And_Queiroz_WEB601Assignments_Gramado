@@ -1,0 +1,14 @@
+    .other-cards {
+      border: 1px solid black;
+      padding: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: auto;
+      margin-bottom: 20px;
+    }
+
+    .first-card {
+      border: 2px solid black;
+      padding: 10px;
+    }

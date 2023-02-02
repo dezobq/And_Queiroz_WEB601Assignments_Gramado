@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-
-import { ContentList } from '../helper-files/content-list';
+import { Component, Input} from '@angular/core';
 import { Content } from '../helper-files/content-interface';
+
 
 
 @Component({
@@ -10,5 +9,6 @@ import { Content } from '../helper-files/content-interface';
   styleUrls: ['./content-card.component.scss']
 })
 export class ContentCardComponent {
-
+  @Input()
+  content!: Content;
 }
