@@ -1,7 +1,12 @@
-<!-- This div container will hold the entire card -->
-<h1>{{content.title}}</h1>
-    <p>{{content.description}}</p>
-    <p>Created by: {{content.creator}}</p>
-    <img *ngIf="content.imgURL" [src]="content.imgURL" [alt]="content.title"/>
-    <p *ngIf="content.type">Type: {{content.type}}</p>
-    <p *ngIf="content.tags">Tags: {{content.tags.join(', ')}}</p>
+<div class="card">
+  <header>{{ content.title }}</header>
+  <img
+    (click)="displayContentIdAndTitle()"
+    [src]="content.imgURL"
+    *ngIf="content.imgURL"
+  />
+  <p>{{ content.description }}</p>
+  <p>Creator: {{ content.creator }}</p>
+  <p *ngIf="content.type">Type: {{ content.type }}</p>
+  <p *ngIf="content.tags">Tags: {{ content.tags.join(", ") }}</p>
+</div>
