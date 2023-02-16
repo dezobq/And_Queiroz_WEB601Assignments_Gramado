@@ -1,14 +1,32 @@
-    .other-cards {
-      border: 1px solid black;
-      padding: 10px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      padding: auto;
-      margin-bottom: 20px;
-    }
+.other-cards {
+  border: 1px solid black;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: auto;
+  margin-bottom: 20px;
+}
 
-    .first-card {
-      border: 2px solid black;
-      padding: 10px;
-    }
+.first-card {
+  border: 3px solid black;
+  padding: 10px;
+}
+
+.type-a {
+  background-color: green;
+  color: white;
+}
+
+.type-b {
+  background-color: red;
+  color: white;
+}
+
+.not-found {
+  color: red;
+}
+
+.found {
+  color: green;
+}

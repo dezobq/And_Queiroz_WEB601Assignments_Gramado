@@ -1,7 +1,22 @@
-<ng-container *ngFor="let content of contentArray; let i = index">
-  <div [ngClass]="{ 'first-card': i === 0,
-        'other-cards': true }"
-       (click)="onContentClick(content)" >
-    <app-content-card [content]="content" ></app-content-card>
-  </div>
-</ng-container>
+<br />
+<input type="text" [(ngModel)]="searchTitle" placeholder="Search" />
+<button (click)="searchForTitle()">Search</button>
+<p [ngClass]="{ 'not-found': !contentFound, found: contentFound }">
+  {{ message }}
+</p>
+<ng-container *ngFor="let content of contentArray">
+  <div>
+    <app-content-card
+      (click)="onContentClick(content)"
+      *ngFor="let item of contentArray | filterType : 'Type A'; let i = index"
+      [ngClass]="{ 'first-card': i === 0, 'other-cards': true }"
+      [content]="item"
+      [ngStyle]="{
+        border:
+          contentFound && item.title === searchTitle
+            ? '2px solid green'
+            : 'none'
+      }"
+    >
+    </app-content-card></div
+></ng-container>

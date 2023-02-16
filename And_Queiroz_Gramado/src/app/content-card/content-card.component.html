@@ -1,3 +1,28 @@
+<div class="card" hoverAffect="border">
+  <header>{{ content.title }}</header>
+  <ng-container *ngIf="content.imgURL; else defaultImage">
+    <img (click)="displayContentIdAndTitle()" [src]="content.imgURL" />
+  </ng-container>
+  <ng-template #defaultImage>
+    <img
+      src="https://cdn4.iconfinder.com/data/icons/picture-sharing-sites/32/No_Image-1024.png"
+      alt="No image"
+    />
+  </ng-template>
+  <p>{{ content.description }}</p>
+  <p>Creator: {{ content.creator }}</p>
+  <p *ngIf="content.type" hoverAffect="underline" class="type">
+    Type: {{ content.type }}
+  </p>
+  <p *ngIf="content.tags">
+    Tags:
+    <span *ngFor="let tag of content.tags; let i = index" hoverAffect="bold">
+      {{ tag }}
+    </span>
+  </p>
+</div>
+
+<!--
 <div class="card">
   <header>{{ content.title }}</header>
   <img
@@ -10,3 +35,4 @@
   <p *ngIf="content.type">Type: {{ content.type }}</p>
   <p *ngIf="content.tags">Tags: {{ content.tags.join(", ") }}</p>
 </div>
+ -->

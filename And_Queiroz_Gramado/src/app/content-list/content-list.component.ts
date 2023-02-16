@@ -7,6 +7,10 @@ import { Content } from '../helper-files/content-interface';
   styleUrls: ['./content-list.component.scss'],
 })
 export class ContentListComponent {
+  searchTitle = '';
+  contentFound = false;
+  message = '';
+  filteredContentArray: any[];
   contentArray: Content[] = [
     {
       id: 1,
@@ -22,8 +26,7 @@ export class ContentListComponent {
       title: 'Second Content',
       description: 'Description of second content',
       creator: 'Jane Doe',
-      imgURL: 'https://picsum.photos/id/11/200/300',
-      type: 'Type B',
+      type: 'Type A',
       tags: ['Tag 4', 'Tag 5', 'Tag 6'],
     },
     {
@@ -76,7 +79,6 @@ export class ContentListComponent {
       title: 'Eighth Content',
       description: 'Description of eighth content',
       creator: 'Bob',
-      imgURL: 'https://picsum.photos/id/17/200/300',
       type: 'Type A',
       tags: ['Tag 22', 'Tag 23', 'Tag 24'],
     },
@@ -85,17 +87,45 @@ export class ContentListComponent {
       title: 'Ninth Content',
       description: 'Description of ninth content',
       creator: 'Bob',
-      imgURL: 'https://picsum.photos/id/17/200/300',
+      imgURL: 'https://picsum.photos/id/18/200/300',
       //type: 'Type A',
-      tags: ['Tag 22', 'Tag 23', 'Tag 24'],
+      tags: ['Tag 22', 'Tag 23', 'Tag 25'],
+    },
+    {
+      id: 10,
+      title: 'Tenth Content',
+      description: 'Description of tenth content',
+      creator: 'Bob',
+      imgURL: 'https://picsum.photos/id/19/200/300',
+      type: 'Type A',
+      tags: ['Tag 22', 'Tag 23', 'Tag 26'],
     },
   ];
 
-  constructor() {}
+  constructor() {
+    this.filteredContentArray = [];
+  }
 
   ngOnInit() {}
 
+  //Assignment 2 - Add a method to log the content id and title when clicked
   onContentClick(content: Content) {
     console.log(`Content clicked: id: ${content.id}, title: ${content.title}`);
+  }
+
+  //Assignment 3 - Add a method to search for a content by title
+  searchForTitle() {
+    const foundContent = this.contentArray.find(
+      (content) => content.title === this.searchTitle
+    );
+    if (foundContent) {
+      this.filteredContentArray = [foundContent];
+      this.contentFound = true;
+      this.message = `Content item with title "${this.searchTitle}" found!`;
+    } else {
+      this.filteredContentArray = [];
+      this.contentFound = false;
+      this.message = `Content item with title "${this.searchTitle}" not found.`;
+    }
   }
 }
