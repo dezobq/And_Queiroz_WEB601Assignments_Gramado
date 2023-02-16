@@ -4,11 +4,11 @@
 <p [ngClass]="{ 'not-found': !contentFound, found: contentFound }">
   {{ message }}
 </p>
-<ng-container *ngFor="let content of contentArray">
+<ng-container *ngFor="let content of contentArray" >
   <div>
     <app-content-card
       (click)="onContentClick(content)"
-      *ngFor="let item of contentArray | filterType : 'Type A'; let i = index"
+      *ngFor="let item of contentArray | filterType : 'romantic'; let i = index"
       [ngClass]="{ 'first-card': i === 0, 'other-cards': true }"
       [content]="item"
       [ngStyle]="{

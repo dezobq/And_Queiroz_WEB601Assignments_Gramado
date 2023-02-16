@@ -9,20 +9,21 @@
       alt="No image"
     />
   </ng-template>
-  <p>{{ content.description }}</p>
-  <p>Creator: {{ content.creator }}</p>
-  <p *ngIf="content.type" hoverAffect="underline" class="type">
-    Type: {{ content.type }}
+  <p><b>Description:</b> {{ content.description }}</p>
+  <p><b>Creator:</b> {{ content.creator }}</p>
+  <p *ngIf="content.type" class="type">
+    <b>Type: </b><span hoverAffect="underline"> {{ content.type }}</span>
   </p>
   <p *ngIf="content.tags">
-    Tags:
+    <b>Tags:</b>
     <span *ngFor="let tag of content.tags; let i = index" hoverAffect="bold">
-      {{ tag }}
+      {{ tag }} {{ i < content.tags.length - 1 ? ", " : "" }}
     </span>
   </p>
 </div>
 
-<!--
+<!-- Assignment 3
+
 <div class="card">
   <header>{{ content.title }}</header>
   <img
