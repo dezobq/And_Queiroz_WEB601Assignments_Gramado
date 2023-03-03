@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { Content } from '../helper-files/content-interface';
 
 @Component({
@@ -6,43 +6,108 @@ import { Content } from '../helper-files/content-interface';
   templateUrl: './content-list.component.html',
   styleUrls: ['./content-list.component.scss'],
 })
+
+/* 4. The user should be able to input each value themselves at the top of the page, and when they click a button that item should appear on the list below. */
 export class ContentListComponent {
   searchTitle = '';
   contentFound = false;
   message = '';
   filteredContentArray: any[];
-  //inclede tags relared to tourism
   contentArray: Content[] = [
     {
       id: 1,
       title: 'Lago Negro',
-      description: 'Take a stroll around the beautiful black lake, surrounded by gardens and pine trees, and rent a paddleboat to explore the waters together.',
+      description:
+        'Take a stroll around the beautiful black lake, surrounded by gardens and pine trees, and rent a paddleboat to explore the waters together.',
       creator: 'Jaime Prawer',
       imgURL: 'https://picsum.photos/id/10/200/300',
       type: 'romantic',
-      tags: ['#landscape', '#nature', 'lake', '#tourism', '#travel', '#vacation', '#water', '#waterfall', '#wildlife', '#winter', '#world'],
+      tags: [
+        '#landscape',
+        '#nature',
+        'lake',
+        '#tourism',
+        '#travel',
+        '#vacation',
+        '#water',
+        '#waterfall',
+        '#wildlife',
+        '#winter',
+        '#world',
+      ],
     },
     {
       id: 2,
       title: 'Mini Mundo',
-      description: 'This miniature park features tiny replicas of iconic buildings and landmarks from around the world, making it a whimsical and unique place to explore together.',
+      description:
+        'This miniature park features tiny replicas of iconic buildings and landmarks from around the world, making it a whimsical and unique place to explore together.',
       creator: 'Jane Doe',
       type: 'romantic',
-      tags: ['#amazing', '#art', '#beautiful', '#beauty', '#colorful', '#color', '#design', '#flower', '#flowers', '#garden', '#gardens', '#green', '#landscape', '#nature', '#park', '#tourism', '#travel', '#vacation', '#water', '#waterfall', '#wildlife', '#winter', '#world'],
+      tags: [
+        '#amazing',
+        '#art',
+        '#beautiful',
+        '#beauty',
+        '#colorful',
+        '#color',
+        '#design',
+        '#flower',
+        '#flowers',
+        '#garden',
+        '#gardens',
+        '#green',
+        '#landscape',
+        '#nature',
+        '#park',
+        '#tourism',
+        '#travel',
+        '#vacation',
+        '#water',
+        '#waterfall',
+        '#wildlife',
+        '#winter',
+        '#world',
+      ],
     },
     {
       id: 3,
       title: 'Snowland',
-      description: "If you're looking for a more adventurous date, head to Snowland, where you can experience skiing, snowboarding, and snow tubing together, regardless of the season.",
+      description:
+        "If you're looking for a more adventurous date, head to Snowland, where you can experience skiing, snowboarding, and snow tubing together, regardless of the season.",
       creator: 'John Smith',
       imgURL: 'https://picsum.photos/id/12/200/300',
       type: 'romantic',
-      tags: ['#amazing', '#art', '#beautiful', '#beauty', '#colorful', '#color', '#design', '#flower', '#flowers', '#garden', '#gardens', '#green', '#landscape', '#nature', '#park', '#tourism', '#travel', '#vacation', '#water', '#waterfall', '#wildlife', '#winter', '#world'],
+      tags: [
+        '#amazing',
+        '#art',
+        '#beautiful',
+        '#beauty',
+        '#colorful',
+        '#color',
+        '#design',
+        '#flower',
+        '#flowers',
+        '#garden',
+        '#gardens',
+        '#green',
+        '#landscape',
+        '#nature',
+        '#park',
+        '#tourism',
+        '#travel',
+        '#vacation',
+        '#water',
+        '#waterfall',
+        '#wildlife',
+        '#winter',
+        '#world',
+      ],
     },
     {
       id: 4,
       title: 'Le Jardin',
-      description: 'Walk hand in hand through the fields of lavender, take a romantic photo in the heart-shaped flowerbed, and enjoy a cup of lavender tea at the cafe.',
+      description:
+        'Walk hand in hand through the fields of lavender, take a romantic photo in the heart-shaped flowerbed, and enjoy a cup of lavender tea at the cafe.',
       creator: 'Bob',
       imgURL: 'https://picsum.photos/id/13/200/300',
       type: 'romantic',
@@ -51,11 +116,23 @@ export class ContentListComponent {
     {
       id: 5,
       title: 'Covered Street',
-      description: ': This covered street is lined with restaurants, cafes, and shops, making it the perfect place to stroll and window-shop together, especially on a rainy day.',
+      description:
+        ': This covered street is lined with restaurants, cafes, and shops, making it the perfect place to stroll and window-shop together, especially on a rainy day.',
       creator: 'Alice',
       imgURL: 'https://picsum.photos/id/14/200/300',
       type: 'romantic',
-      tags: ['#shop', '#street', '#tourism', '#travel', '#vacation', '#water', '#waterfall', '#wildlife', '#winter', '#world'],
+      tags: [
+        '#shop',
+        '#street',
+        '#tourism',
+        '#travel',
+        '#vacation',
+        '#water',
+        '#waterfall',
+        '#wildlife',
+        '#winter',
+        '#world',
+      ],
     },
     {
       id: 6,
@@ -103,11 +180,14 @@ export class ContentListComponent {
     },
   ];
 
-  constructor() {
+  constructor(private cdr: ChangeDetectorRef) {
     this.filteredContentArray = [];
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    // Clone the array to avoid mutating the original data
+    this.contentArray = [...this.contentArray];
+  }
 
   //Assignment 2 - Add a method to log the content id and title when clicked
   onContentClick(content: Content) {
@@ -128,5 +208,10 @@ export class ContentListComponent {
       this.contentFound = false;
       this.message = `Content item with title "${this.searchTitle}" not found.`;
     }
+  }
+
+  onContentAdded(content: Content) {
+    this.contentArray.push(content);
+    this.contentArray = [...this.contentArray];
   }
 }

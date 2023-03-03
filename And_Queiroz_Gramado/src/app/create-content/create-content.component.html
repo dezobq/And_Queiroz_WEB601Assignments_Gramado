@@ -1,0 +1,12 @@
+<div>
+  <h2>Create New Content</h2>
+  <label>ID:</label>
+  <input [(ngModel)]="content.id" type="number" required /><br />
+  <label>Title:</label>
+  <input [(ngModel)]="content.title" type="text" required /><br />
+  <label>Description:</label>
+  <textarea [(ngModel)]="content.description" required></textarea><br />
+  <label>Creator:</label>
+  <input [(ngModel)]="content.creator" type="text" required /><br />
+  <button (click)="onSubmit()">Submit</button>
+</div>
