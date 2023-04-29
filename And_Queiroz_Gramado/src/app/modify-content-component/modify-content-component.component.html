@@ -1,0 +1,8 @@
+<div>
+  <h3>Add New Content</h3>
+  <label for="title">Title:</label>
+  <input type="text" [(ngModel)]="title" name="title" id="title">
+  <label for="body">Body:</label>
+  <textarea [(ngModel)]="body" name="body" id="body"></textarea>
+  <button (click)="addContent()">Add Content</button>
+</div>

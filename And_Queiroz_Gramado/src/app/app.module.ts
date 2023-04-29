@@ -9,6 +9,7 @@ import { FilterTypePipe } from './filter-type.pipe';
 import { HoverAffectDirective } from './hover-affect.directive';
 import { CreateContentComponent } from './create-content/create-content.component';
 import { MessagesComponent } from './messages/messages.component';
+import { ModifyContentComponentComponent } from './modify-content-component/modify-content-component.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,9 +19,13 @@ import { MessagesComponent } from './messages/messages.component';
     HoverAffectDirective,
     CreateContentComponent,
     MessagesComponent,
+    ModifyContentComponentComponent,
   ],
   imports: [BrowserModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+  title = 'And_Queiroz_Gramado';
+}
+

@@ -1,5 +1,6 @@
 export interface Content {
-  id: number; // unique identifier for the content
+
+  id: number | null; // id of the content, can be null
   title: string; // title of the content
   description: string; //description of the content
   creator: string; //creator of the content
