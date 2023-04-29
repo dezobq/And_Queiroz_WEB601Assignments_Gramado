@@ -1,4 +1,5 @@
 import { Content } from './content-interface';
+import { MessageService } from '../message.service';
 
 export class ContentList {
   private contentArray: Content[];
@@ -34,5 +35,9 @@ export class ContentList {
       html += `<p>Tags: ${content.tags.join(', ')}</p>`;
     }
     return html;
+  }
+  /* Invoke this services function in your ContentList in order to retrieve your array of data and use it to fix your ContentList component so it displays the content just as it did before. */
+  loadContentArray(contentArray: Content[]): void {
+    this.contentArray = contentArray;
   }
 }
